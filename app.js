@@ -1,4 +1,3 @@
-const e = require("express");
 const express = require("express");
 const app = express();
 app.use(express.json());
@@ -20,7 +19,6 @@ app.get("/firstSTD", (req, res) => {
 });
 
 app.post("/addtask", (req, res) => {
-  const { name, id, iscompleted } = req.body;
   todostd.push({ name: "Ahmad", id: 5, iscompleted: false });
   res.json(todostd);
 });
@@ -54,33 +52,25 @@ app.post("/frombody", (req, res) => {
 app.delete("/deletee/:id", (req, res) => {
   const deletee = todostd.find((elem) => elem.id == req.params.id);
 
-  todostd.splice(deletee.id,1);
+  todostd.splice(deletee.id, 1);
   res.json(todostd);
-
 });
 // update
 app.put("/update/:id/:new", (req, res) => {
   const update = todostd.map((elem) => {
-  if (elem.id == req.params.id){
-    return {
-      id: elem.id,
-      name: req.params.new,
-      iscompleted: elem.iscompleted
-    };
-    }else{ return elem}
+    if (elem.id == req.params.id) {
+      return {
+        id: elem.id,
+        name: req.params.new,
+        iscompleted: elem.iscompleted,
+      };
+    } else {
+      return elem;
+    }
   });
 
-
   res.json(update);
-
 });
-
-
-
-
-
-
-
 
 app.listen(5000, (req, res) => {
   console.log("Server Runing");
