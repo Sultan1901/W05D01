@@ -1,11 +1,11 @@
-const war = isPalindrome((s)=> {
-    let reverse = s.toLowerCase().split(' ').reverse();
-    if(s.toLowerCase()==reverse.join(' ')){
-      return true;
+function isPalindrome(x) {
+    let wars = x.toLowerCase().split('').reverse();
+    if(x.toLowerCase()!==wars.join('')){
+      return false;
     } else {
-        return false;
+        return true;
     }
-  })
+  }
 
 
 isPalindrome('Abba');
